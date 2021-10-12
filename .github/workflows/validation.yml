@@ -1,0 +1,25 @@
+---
+name: Generic Validation Action
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  thevalidatoR:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build report
+        uses: insightsengineering/thevalidatoR@main
+          
+      - name: Upload visR validation report
+        uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: rbmi-report.pdf
+          path: ./validation_report.pdf
+          if-no-files-found: error
