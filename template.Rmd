@@ -98,7 +98,7 @@ params$pkg_dir %>%
 ## `R CMD check`
 
 ```{r r_cmd_check, echo = FALSE, eval = TRUE}
-rcmdcheck_results <- rcmdcheck::rcmdcheck(params$pkg_dir, quiet = TRUE)
+rcmdcheck_results <- rcmdcheck::rcmdcheck(params$pkg_dir, quiet = FALSE)
 cat(rcmdcheck_results$stdout)
 cat(rcmdcheck_results$stderr)
 ```
